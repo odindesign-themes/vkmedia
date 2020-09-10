@@ -42,7 +42,6 @@ function vkmedia_activate() {
     
     // create tables
     vkmedia_create_media_table();
-    vkmedia_create_media_group_table();
   }
 }
 
@@ -56,7 +55,6 @@ function vkmedia_uninstall() {
   delete_option(VKMEDIA_VERSION_OPTION);
 
   // drop tables
-  vkmedia_drop_media_group_table();
   vkmedia_drop_media_table();
 }
 

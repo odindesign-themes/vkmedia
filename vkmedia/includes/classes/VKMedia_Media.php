@@ -4,18 +4,15 @@ class VKMedia_Media {
   private $wpdb;
 
   private $table;
-  private $vkmedia_media_group_table;
 
   public function __construct() {
     $table_name = 'vkmedia_media';
-    $vkmedia_media_group_table_name = 'vkmedia_media_group';
 
     global $wpdb;
 
     $this->wpdb = $wpdb;
 
     $this->table = $wpdb->prefix . $table_name;
-    $this->vkmedia_media_group_table = $wpdb->prefix . $vkmedia_media_group_table_name;
   }
 
   public function createTable() {
@@ -73,16 +70,6 @@ class VKMedia_Media {
 
     return $this->wpdb->get_results(
       $this->wpdb->prepare($sql, [$member_id])
-    );
-  }
-
-  public function getByGroup($group_id) {
-    $sql = "SELECT id, name, type, link, upload_date, user_id from media
-              INNER JOIN $this->vkmedia_media_group_table ON $this->table.id = $this->vkmedia_media_group_table.media_id
-              WHERE group_id=%d";
-
-    return $this->wpdb->get_results(
-      $this->wpdb->prepare($sql, [$group_id])
     );
   }
 }

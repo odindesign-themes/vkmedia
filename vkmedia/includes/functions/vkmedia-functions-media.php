@@ -85,16 +85,4 @@ function vkmedia_get_member_media($member_id) {
   return $Media->getByMember($member_id);
 }
 
-/**
- * Returns media by group
- * 
- * @return array
- */
-function vkmedia_get_group_media($group_id) {
-  $Media = new VKMedia_Media();
-
-  // array with matching elements, empty array if no matching rows or database error
-  return $Media->getByGroup($group_id);
-}
-
 ?>
